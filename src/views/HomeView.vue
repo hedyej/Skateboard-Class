@@ -248,8 +248,63 @@ import NavBar from "../components/NavBar.vue";
   </div>
 </section>
   
-<!-- cart -->
+<!-- cart step1 -->
+<main class="bg-grey">
+  <div class="container py-4">
+    <h1>標題</h1>
+    <div class="text-end">
+      <button type="button" class="btn btn-outline-dark mb-3">刪除全部</button>
+    </div>
 
+    <table class="table bg-white table-striped table-hover align-middle rounded">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">名稱</th>
+          <th scope="col">價格</th>
+          <th scope="col">數量</th>
+          <th scope="col">合計</th>
+          <th scope="col">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <img src="../assets/img/Home02.png" height="100px" width="100px" class="object-fit-cover">
+          </th>
+          <td class="fw-bold">團體進階班(6人)</td>
+          <td>
+            <div class="d-flex flex-column">
+              <span>NT$ 1000 / 人</span>
+              <del class="text-secondary">NT$ 1500</del>
+            </div>
+          </td>
+          <td>
+            <div class="input-group input-group-sm" style="width: 200px;">
+              <button class="btn btn-outline-secondary" type="button">Button</button>
+              <input id="qtyInput" type="text" class="form-control">
+              <button class="btn btn-outline-secondary" type="button">Button</button>
+            </div>
+          </td>
+          <td>NT$ 1500</td>
+          <td>del</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>dqwq</tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <h4>總計 NT$ 1000  </h4>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="text-end">
+      <button type="button" class="btn btn-accent">立即結帳</button>
+    </div>
+  </div>
+</main>
 
 
 

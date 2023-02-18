@@ -83,7 +83,7 @@ import NavBar from "../components/NavBar.vue";
       <img src="../assets/img/Home01.png" class="object-fit-cover" width="556px" height="400px">
       
       <div class="flex-grow-1 text-center ms-5 ">
-        <h1 class="mb-4">小班制課程</h1>
+        <h1 class="mb-4">小班制課程111</h1>
         <div class="mb-4" style="display:inline-block;  width:120px; height: 6px; background-color: #EFF249;"></div>
         <p class="mb-4">小班制的滑板課程，最多四人一組，是一個很好的機會讓你們互相交流、認識朋友。我們專業的老師會帶領你們學習滑板的基本技巧，並提供即時反饋和支援。在小班的氛圍中，你們不僅能學到新技能，還能建立真正的友誼</p>
         <button type="button" class="btn btn-accent">查看更多</button>

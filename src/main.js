@@ -10,7 +10,13 @@ import { faLine } from '@fortawesome/free-brands-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-library.add(faLine, faYoutube, faCartShopping, faUser);
+import {  faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+library.add(faLine, faYoutube, faCartShopping, faUser, faTrashCan, faPen, faArrowLeft, faPlus, faMinus, faCircleCheck);
 
 import "./assets/all.scss";
 

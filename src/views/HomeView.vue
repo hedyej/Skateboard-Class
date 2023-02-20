@@ -49,8 +49,7 @@ import NavBar from "../components/NavBar.vue";
   
 
   <section>
-    <div style="background-image:url('../assets/img/homeBg.png'); height: 300px; width:100%"></div>
-    <img style="height:300px" class="w-100 object-fit-cover" src="../assets/img/homeBg.png" alt="">
+    <div style="background-image:url('../src/assets/img/homeBg.png'); height: 400px; width:100%; background-position: 70% center;"></div>
   </section>
 
   <section class="bg-primary mb-5 text-white">
@@ -80,7 +79,7 @@ import NavBar from "../components/NavBar.vue";
 
   <section class="container  mb-6">
     <div class="d-flex align-items-center mb-6">
-      <img src="../assets/img/Home01.png" class="object-fit-cover" width="556px" height="400px">
+      <img src="../assets/img/Home01.png" class="flex-grow-0 object-fit-cover" width="556px" height="400px">
       
       <div class="flex-grow-1 text-center ms-5 ">
         <h1 class="mb-4">小班制課程111</h1>
@@ -204,7 +203,10 @@ import NavBar from "../components/NavBar.vue";
   <!-- detail -->
 <main class="bg-grey">
   <div class="container pt-4 pb-6 bg-grey">
-    <button type="button" class="btn btn-outline-secondary">上一頁</button>
+    <button type="button" class="btn btn-outline-dark border-0"> 
+      <font-awesome-icon class="me-2 " :icon="['fas', 'arrow-left']" />
+      上一頁
+    </button>
     <div class="d-flex pt-4 pb-5">
       <div class="d-flex flex-column">
       <img width="100px" height="75px" src="../assets/img/Home02.png" class="object-fit-contain border rounded mb-3" alt="" >
@@ -224,9 +226,13 @@ import NavBar from "../components/NavBar.vue";
         <div class="mb-3">
           <label for="qtyInput" class="form-label">Example label</label>
           <div class="input-group">
-              <button class="btn btn-outline-secondary" type="button">Button</button>
+              <button class="btn btn-outline-secondary" type="button">
+                <font-awesome-icon  :icon="['fas', 'minus']" />
+              </button>
               <input id="qtyInput" type="text" class="form-control">
-              <button class="btn btn-outline-secondary" type="button">Button</button>
+              <button class="btn btn-outline-secondary" type="button">
+                <font-awesome-icon  :icon="['fas', 'plus']" />
+              </button>
           </div>
         </div>
         <p class="text-secondary">剩餘人數: <span>8</span></p>
@@ -281,34 +287,157 @@ import NavBar from "../components/NavBar.vue";
           </td>
           <td>
             <div class="input-group input-group-sm" style="width: 200px;">
-              <button class="btn btn-outline-secondary" type="button">Button</button>
+              <button class="btn btn-outline-secondary" type="button">
+                <font-awesome-icon  :icon="['fas', 'minus']" />
+              </button>
               <input id="qtyInput" type="text" class="form-control">
-              <button class="btn btn-outline-secondary" type="button">Button</button>
+              <button class="btn btn-outline-secondary" type="button">
+                <font-awesome-icon  :icon="['fas', 'plus']" />
+              </button>
             </div>
           </td>
           <td>NT$ 1500</td>
-          <td>del</td>
+          <td>
+            <font-awesome-icon class="me-4" :icon="['fas', 'pen']" />
+            <font-awesome-icon class="me-2" :icon="['fas', 'trash-can']" />
+          </td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>dqwq</tr>
-        <tr></tr>
-        <tr></tr>
-        <tr>
-          <h4>總計 NT$ 1000  </h4>
-        </tr>
-      </tfoot>
     </table>
-
     <div class="text-end">
+      <h4 class="mb-4">總計 NT$ 1000 </h4>
       <button type="button" class="btn btn-accent">立即結帳</button>
     </div>
   </div>
 </main>
 
+<!-- 表單 -->
+<div class=" bg-grey">
+  <div class="container">
+    <button type="button" class="btn btn-outline-dark border-0 mb-3"> 
+      <font-awesome-icon class="me-2 " :icon="['fas', 'arrow-left']" />
+      上一頁
+    </button>
+
+    <div class="bg-white p-4 rounded">
+      <div class="bg-white rounded">
+        <h1 class="mb-4">結帳</h1>
+        <h4 class="mb-4">訂單內容</h4>
+        <table class="table bg-white table-striped table-hover align-middle rounded">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">名稱</th>
+              <th scope="col">價格</th>
+              <th scope="col">數量</th>
+              <th scope="col">合計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <img src="../assets/img/Home02.png" height="100px" width="100px" class="object-fit-cover">
+              </th>
+              <td class="fw-bold">團體進階班(6人)</td>
+              <td>
+                <div class="d-flex flex-column">
+                  <span>NT$ 1000 / 人</span>
+                  <del class="text-secondary">NT$ 1500</del>
+                </div>
+              </td>
+              <td>
+                <div class="input-group input-group-sm" style="width: 200px;">
+                  <button class="btn btn-outline-secondary" type="button">
+                    <font-awesome-icon  :icon="['fas', 'minus']" />
+                  </button>
+                  <input id="qtyInput" type="text" class="form-control">
+                  <button class="btn btn-outline-secondary" type="button">
+                    <font-awesome-icon  :icon="['fas', 'plus']" />
+                  </button>
+                </div>
+              </td>
+              <td>NT$ 1500</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4 class="text-end">總計 NT$ 1000 </h4>
+      
+        <hr class="my-5">
+
+        <h4 class="mb-4">付款資訊</h4>
+        <form action="">
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">付款人</label>
+                <input type="text" class="form-control" id="formGroupExampleInput">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">信箱</label>
+                <input type="text" class="form-control" id="formGroupExampleInput">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">  
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">電話</label>
+                <input type="text" class="form-control" id="formGroupExampleInput">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-8">
+              <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">地址</label>
+                <input type="text" class="form-control" id="formGroupExampleInput">
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-8">
+              <label for="formGroupExampleInput" class="form-label">付款方式</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  已ATM轉帳
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                  課後現金付款
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-8">
+              <label for="exampleFormControlTextarea1" class="form-label">留言</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-accent">送出訂單</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
+<h1><font-awesome-icon class="me-2" :icon="['fas', 'circle-check']" /></h1>
 
 
 

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+//front
 import FrontView from "@/views/front/FrontView.vue"
 import HomeView from "@/views/front/HomeView.vue";
 import CartView from "@/views/front/CartView.vue";
@@ -6,10 +7,19 @@ import ClassView from "@/views/front/ClassView.vue";
 import ClassDetail from "@/views/front/ClassDetail.vue";
 import OrderDone from "@/views/front/OrderDone.vue";
 import OrderView from "@/views/front/OrderView.vue";
+//admin
+import AdminClass from "@/views/admin/AdminClass.vue";
+import AdminOrder from "@/views/admin/AdminOrder.vue";
+import AdminClassContent from "@/views/admin/AdminClassContent.vue";
+import AdminOrderContent from "@/views/admin/AdminOrderContent.vue";
+import AdminView from "@/views/admin/AdminView.vue";
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    //front
     {
       path: "/",
       name: "frontView",
@@ -31,19 +41,47 @@ const router = createRouter({
           component: ClassDetail,
         },
         {
-          path: "/cart",
+          path: "cart",
           name: "cart",
           component: CartView,
         },
         {
-          path: "/order",
+          path: "order",
           name: "order",
           component: OrderView,
         },
         {
-          path: "/orderDone",
+          path: "orderDone",
           name: "orderDone",
           component: OrderDone,
+        },
+      ]
+    },
+    //admin
+    {
+      path: "/admin",
+      name: "adminView",
+      component: AdminView,
+      children:[
+        {
+          path: "adminClass",
+          name: "adminClass",
+          component: AdminClass,
+        },
+        {
+          path: "adminClass/:id",
+          name: "adminClassContent",
+          component: AdminClassContent,
+        },
+        {
+          path: "adminOrder",
+          name: "adminOrder",
+          component: AdminOrder,
+        },
+        {
+          path: "AdminOrder/:id",
+          name: "AdminOrderContent",
+          component: AdminOrderContent,
         },
       ]
     },

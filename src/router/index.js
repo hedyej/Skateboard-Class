@@ -1,21 +1,51 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import FrontView from "@/views/front/FrontView.vue"
+import HomeView from "@/views/front/HomeView.vue";
+import CartView from "@/views/front/CartView.vue";
+import ClassView from "@/views/front/ClassView.vue";
+import ClassDetail from "@/views/front/ClassDetail.vue";
+import OrderDone from "@/views/front/OrderDone.vue";
+import OrderView from "@/views/front/OrderView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      name: "home",
-      component: HomeView,
-    },
-    {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      name: "frontView",
+      component: FrontView,
+      children:[
+        {
+          path: "home",
+          name: "home",
+          component: HomeView,
+        },
+        {
+          path: "class",
+          name: "class",
+          component: ClassView,
+        },
+        {
+          path: "/class/:id",
+          name: "classDetail",
+          component: ClassDetail,
+        },
+        {
+          path: "/cart",
+          name: "cart",
+          component: CartView,
+        },
+        {
+          path: "/order",
+          name: "order",
+          component: OrderView,
+        },
+        {
+          path: "/orderDone",
+          name: "orderDone",
+          component: OrderDone,
+        },
+      ]
     },
   ],
 });

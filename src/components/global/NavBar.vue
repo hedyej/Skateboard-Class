@@ -1,14 +1,15 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-xxl">
-            <a class="navbar-brand" href="#">
-                <img src="../assets/logo.svg">
-            </a>
+            <RouterLink :to="{name: 'home' }" class="nav-link active" >
+                <img src="@/assets/logo.svg">
+            </RouterLink>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item mx-3">
-                <a class="nav-link active" aria-current="page" href="#">所有課程</a>
+                <RouterLink :to="{name: 'class' }" class="nav-link active" >所有課程</RouterLink>
                 </li>
             </ul>
+
             <a href="" class="text-white me-3">
                 <font-awesome-icon :icon="['fas', 'cart-shopping']" />
             </a>
@@ -20,11 +21,11 @@
             </button>
         </div>
     </nav>
-    <hr>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-xxl">
             <a class="navbar-brand" href="#">
-                <img src="../assets/logo.svg">
+                <img src="@/assets/logo.svg">
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item mx-3">
@@ -52,13 +53,9 @@
                 </ul>
                 </div>
         </div>
-    </nav>
+    </nav> -->
 </template>
 
-
-
-<script>
-    export default {
-        name:"NavBar"
-    }
+<script type="module">
+    import { RouterLink } from 'vue-router';
 </script>

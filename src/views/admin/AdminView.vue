@@ -1,3 +1,1 @@
-<template>
-    adminview
-</template>
+<template>adminview</template>

@@ -1,3 +1,1 @@
-<template>
-    adminorder
-</template>
+<template>adminorder</template>

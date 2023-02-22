@@ -1,3 +1,1 @@
-<template>
-    adminclass
-</template>
+<template>adminclass</template>

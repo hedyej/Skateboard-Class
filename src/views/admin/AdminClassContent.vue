@@ -1,3 +1,1 @@
-<template>
-    adminclasscontent
-</template>
+<template>adminclasscontent</template>

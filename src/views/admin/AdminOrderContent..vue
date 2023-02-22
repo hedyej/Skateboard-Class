@@ -1,3 +1,1 @@
-<template>
-    adminordercontent
-</template>
+<template>adminordercontent</template>

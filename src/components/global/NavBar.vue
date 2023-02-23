@@ -1,28 +1,28 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-xxl">
-            <RouterLink :to="{name: 'home' }" class="nav-link active" >
-                <img src="@/assets/logo.svg">
-            </RouterLink>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item mx-3">
-                <RouterLink :to="{name: 'class' }" class="nav-link active" >所有課程</RouterLink>
-                </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-xxl">
+      <RouterLink :to="{ name: 'home' }" class="nav-link active">
+        <img src="@/assets/logo.svg" />
+      </RouterLink>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-3">
+          <RouterLink :to="{ name: 'class' }" class="nav-link active"
+            >所有課程</RouterLink
+          >
+        </li>
+      </ul>
 
-            <a href="" class="text-white me-3">
-                <font-awesome-icon :icon="['fas', 'cart-shopping']" />
-            </a>
-            <button type="button" class="btn btn-outline-light mx-3">
-                <font-awesome-icon class="me-2" :icon="['fas', 'user']" />
-                <span>
-                    管理員登入
-                </span>
-            </button>
-        </div>
-    </nav>
+      <a href="" class="text-white me-3">
+        <font-awesome-icon :icon="['fas', 'cart-shopping']" />
+      </a>
+      <button type="button" class="btn btn-outline-light mx-3">
+        <font-awesome-icon class="me-2" :icon="['fas', 'user']" />
+        <span> 管理員登入 </span>
+      </button>
+    </div>
+  </nav>
 
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-xxl">
             <a class="navbar-brand" href="#">
                 <img src="@/assets/logo.svg">
@@ -56,6 +56,6 @@
     </nav> -->
 </template>
 
-<script type="module">
-    import { RouterLink } from 'vue-router';
-</script>
+<!-- <script type="module">
+import { RouterLink } from "vue-router";
+</script> -->

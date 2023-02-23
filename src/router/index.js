@@ -80,4 +80,10 @@ const router = createRouter({
   ],
 });
 
+// {
+//   path: "adminOrder/:id",
+//   name: "adminOrderContent",
+//   component: AdminOrderContent,
+// },
+
 export default router;

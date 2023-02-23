@@ -1,18 +1,19 @@
 <template>
   <NavBar />
   <RouterView />
-  <Footer></Footer>
+  <TheFooter></TheFooter>
 </template>
 
 <script type="module">
 import { RouterView } from "vue-router";
 import NavBar from "../../components/global/NavBar.vue";
-import Footer from "../../components/global/Footer.vue";
+import TheFooter from "../../components/global/TheFooter.vue";
 
 export default {
   components: {
     NavBar,
-    Footer,
+    TheFooter,
+    RouterView,
   },
 };
 </script>

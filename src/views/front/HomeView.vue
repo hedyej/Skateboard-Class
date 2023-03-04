@@ -124,11 +124,3 @@
     </div>
   </section>
 </template>
-
-<script>
-import NavBar from "../../components/global/NavBar.vue";
-
-export default {
-  components: { NavBar },
-};
-</script>

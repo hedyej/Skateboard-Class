@@ -9,7 +9,7 @@
       "
       class="d-flex align-items-center justify-content-center"
     >
-      <h1 class="display-1 text-white" style="text-shadow: 2px 3px 5px #4d4d4d">
+      <h1 class="display-4 text-white" style="text-shadow: 2px 3px 5px #4d4d4d">
         所有課程
       </h1>
     </div>

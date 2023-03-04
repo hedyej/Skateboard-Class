@@ -1,4 +1,5 @@
 <template>
+  {{ test }} 什麼？
   <div class="bg-grey py-4">
     <div class="container">
       <button type="button" class="btn btn-outline-dark border-0 mb-3">
@@ -25,12 +26,12 @@
             <tbody>
               <tr>
                 <th scope="row">
-                  <img
-                    src="../assets/img/Home02.png"
+                  <!-- <img
+                    src="@/assets/img/Home02.png"
                     height="100px"
                     width="100px"
                     class="object-fit-cover"
-                  />
+                  /> -->
                 </th>
                 <td class="fw-bold">團體進階班(6人)</td>
                 <td>
@@ -174,3 +175,22 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapState } from "pinia";
+import cartStore from "../../stores/cartStore";
+
+export default {
+  // data() {
+  //   return {
+  //     ...mapState(cartStore, ["test"]),
+  //   };
+  // },
+  computed: {
+    ...mapState(cartStore, ["test"]),
+  },
+  mounted() {
+    console.log(this.test);
+  },
+};
+</script>

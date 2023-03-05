@@ -18,54 +18,36 @@
   <main class="bg-grey py-5">
     <div class="container">
       <nav class="nav nav-pills d-flex justify-content-center mb-5">
-        <a class="nav-link active" href="#" aria-current="page">團體班</a>
-        <a class="nav-link" href="#">個人班</a>
+        <a
+          v-for="tab in tabs"
+          :key="tab"
+          class="nav-link me-3"
+          :class="{ active: nowTab === tab }"
+          href="#"
+          aria-current="page"
+          @click.prevent="nowTab = tab"
+          >{{ tab }}</a
+        >
       </nav>
 
       <div class="row row-cols-3">
-        <div class="col">
+        <div class="col" v-for="product in products" :key="product.id">
           <div class="card border-0">
-            <img src="@/assets/img/Home02.png" class="card-img-top" alt="..." />
+            <img
+              :src="product.imageUrl"
+              class="card-img-top object-fit-cover"
+              alt="..."
+              style="height: 200px"
+            />
             <div class="card-body bg-white">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">{{ product.title }}</h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {{ product.content }}
               </p>
-              <a href="#" class="btn btn-outline-dark w-100 text-center"
-                >Go somewhere</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card border-0">
-            <img src="@/assets/img/Home02.png" class="card-img-top" alt="..." />
-            <div class="card-body bg-white">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-outline-dark w-100 text-center"
-                >Go somewhere</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card border-0">
-            <img src="@/assets/img/Home02.png" class="card-img-top" alt="..." />
-            <div class="card-body bg-white">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-outline-dark w-100 text-center"
-                >Go somewhere</a
+              <RouterLink
+                :to="`/class/${product.id}`"
+                class="btn btn-outline-dark w-100 text-center"
+                >查看更多</RouterLink
               >
             </div>
           </div>
@@ -84,3 +66,57 @@
     </div>
   </main>
 </template>
+
+<script>
+import { RouterLink } from "vue-router";
+const { VITE_BASE_URL, VITE_API_PATH } = import.meta.env;
+export default {
+  components: {
+    RouterLink,
+  },
+  data() {
+    return {
+      products: [],
+      tabs: ["所有課程", "大橘", "虎斑"],
+      nowTab: "所有課程",
+    };
+  },
+  methods: {
+    getProduct() {
+      this.$http
+        .get(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/products/all`)
+        .then((res) => {
+          this.products = res.data.products;
+        })
+        .catch((err) => console.log(err));
+    },
+    getTypeProduct(type) {
+      console.log(type);
+      this.$http
+        .get(
+          `${VITE_BASE_URL}v2/api/${VITE_API_PATH}/products?category=${type}`
+        )
+        .then((res) => {
+          this.products = res.data.products;
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    },
+  },
+  watch: {
+    nowTab() {
+      if (this.nowTab === "所有課程") {
+        this.getProduct();
+        console.log("all");
+      } else {
+        this.getTypeProduct(this.nowTab);
+        console.log(this.nowTab);
+      }
+    },
+  },
+  mounted() {
+    this.getProduct();
+    console.log("產品", this.products);
+  },
+};
+</script>

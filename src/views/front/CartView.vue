@@ -1,4 +1,8 @@
 <template>
+  <DeleteModal ref="deleteModal">
+    <template #header>確定刪除？</template>
+    <template #body>您確定要刪除購物車課程嗎？</template>
+  </DeleteModal>
   <main class="bg-grey">
     <div class="container py-4">
       <h1>購物車</h1>
@@ -6,7 +10,7 @@
         <button
           type="button"
           class="btn btn-outline-dark mb-3"
-          @click="deleteAllCarts"
+          @click="showModal('all')"
         >
           刪除全部
         </button>
@@ -74,9 +78,12 @@
             <td>NT$ 1500</td>
             <td>
               <!-- <font-awesome-icon class="me-4" :icon="['fas', 'pen']" /> -->
-              <a href="" @click="deleteCart(item.id)">
-                <font-awesome-icon class="me-2" :icon="['fas', 'trash-can']" />
-              </a>
+
+              <font-awesome-icon
+                class="me-2 cursor-pointer"
+                :icon="['fas', 'trash-can']"
+                @click="showModal('one', item.id)"
+              />
             </td>
           </tr>
         </tbody>
@@ -94,8 +101,20 @@
 <script>
 import { mapState, mapActions } from "pinia";
 import cartStore from "../../stores/cartStore";
+import DeleteModal from "../../components/global/DeleteModal.vue";
 
 export default {
+  data() {
+    return {
+      deleteModal: {
+        type: "",
+        cartId: "",
+      },
+    };
+  },
+  components: {
+    DeleteModal,
+  },
   computed: {
     ...mapState(cartStore, ["carts"]),
   },
@@ -106,6 +125,9 @@ export default {
       "deleteCart",
       "deleteAllCarts",
     ]),
+    showModal(type, cartId) {
+      this.$refs.deleteModal.showModal(type, cartId);
+    },
   },
   mounted() {
     this.getCart();

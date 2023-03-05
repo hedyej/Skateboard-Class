@@ -11,6 +11,19 @@ export default defineStore("cartStore", {
     };
   },
   actions: {
+    addCart(productId, qty = 1) {
+      const data = {
+        product_id: productId,
+        qty,
+      };
+      axios
+        .post(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/cart`, { data })
+        .then(() => {
+          alert("新增成功");
+          this.getCart();
+        })
+        .catch((err) => console.log(err));
+    },
     getCart() {
       axios
         .get(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/cart`)
@@ -35,7 +48,6 @@ export default defineStore("cartStore", {
         .catch((err) => console.log(err));
     },
     deleteCart(cartId) {
-      alert("確定要刪除嗎");
       axios
         .delete(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/cart/${cartId}`)
         .then(() => {
@@ -44,7 +56,6 @@ export default defineStore("cartStore", {
         .catch((err) => console.log(err));
     },
     deleteAllCarts() {
-      alert("確定要刪除嗎");
       axios
         .delete(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/carts`)
         .then(() => {

@@ -8,7 +8,7 @@
       </h1>
       <div class="d-flex text-center align-items-center">
         <div class="pe-5">
-          <H4 class="mb-3">專業師資</H4>
+          <h4 class="mb-3">專業師資</h4>
           <p>擁有專業和十年經驗的師資團隊，能夠為學員提供高品質的教學</p>
         </div>
 

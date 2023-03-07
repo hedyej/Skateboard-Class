@@ -54,13 +54,35 @@
         </div>
       </div>
 
-      <nav aria-label="Page navigation example" class="mt-5 text-center">
+      <nav v-if="pagination.total_pages > 1" class="mt-5 text-center">
         <ul class="pagination justify-content-center">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="#"
+              v-if="has_pre"
+              @click="getProduct(nowTab, --i)"
+              >Previous</a
+            >
+          </li>
+          <li v-for="i in pagination.total_pages" :key="i" class="page-item">
+            <a
+              class="page-link"
+              :class="{ active: i === pagination.current_page }"
+              href="#"
+              @click="getProduct(nowTab, i)"
+              >{{ i }}</a
+            >
+          </li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="#"
+              v-if="has_next"
+              @click="getProduct(nowTab, ++i)"
+              >Next</a
+            >
+          </li>
         </ul>
       </nav>
     </div>
@@ -79,44 +101,43 @@ export default {
       products: [],
       tabs: ["所有課程", "大橘", "虎斑"],
       nowTab: "所有課程",
+      pagination: {},
     };
   },
   methods: {
-    getProduct() {
-      this.$http
-        .get(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/products/all`)
-        .then((res) => {
-          this.products = res.data.products;
-        })
-        .catch((err) => console.log(err));
-    },
-    getTypeProduct(type) {
-      console.log(type);
-      this.$http
-        .get(
-          `${VITE_BASE_URL}v2/api/${VITE_API_PATH}/products?category=${type}`
-        )
-        .then((res) => {
-          this.products = res.data.products;
-          console.log(res);
-        })
-        .catch((err) => console.log(err));
+    getProduct(type, page = 1) {
+      if (type === "所有課程") {
+        this.$http
+          .get(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/products?page=${page}`)
+          .then((res) => {
+            this.products = res.data.products;
+            this.pagination = res.data.pagination;
+            console.log(res);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        console.log(type);
+        this.$http
+          .get(
+            `${VITE_BASE_URL}v2/api/${VITE_API_PATH}/products?page=${page}&category=${type}`
+          )
+          .then((res) => {
+            this.products = res.data.products;
+            this.pagination = res.data.pagination;
+            console.log(res);
+          })
+          .catch((err) => console.log(err));
+      }
     },
   },
   watch: {
     nowTab() {
-      if (this.nowTab === "所有課程") {
-        this.getProduct();
-        console.log("all");
-      } else {
-        this.getTypeProduct(this.nowTab);
-        console.log(this.nowTab);
-      }
+      this.getProduct(this.nowTab);
+      console.log(this.nowTab);
     },
   },
   mounted() {
-    this.getProduct();
-    console.log("產品", this.products);
+    this.getProduct(this.nowTab);
   },
 };
 </script>

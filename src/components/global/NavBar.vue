@@ -1,6 +1,8 @@
 <template>
+  {{ carts }}
+  {{ total }}
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-xxl">
+    <div class="container">
       <RouterLink :to="{ name: 'home' }" class="nav-link active">
         <img src="@/assets/logo.svg" />
       </RouterLink>
@@ -15,6 +17,7 @@
       <a href="" class="text-white me-3">
         <font-awesome-icon :icon="['fas', 'cart-shopping']" />
       </a>
+      <p></p>
       <button type="button" class="btn btn-outline-light mx-3">
         <font-awesome-icon class="me-2" :icon="['fas', 'user']" />
         <span> 管理員登入 </span>
@@ -56,6 +59,19 @@
     </nav> -->
 </template>
 
-<!-- <script type="module">
+<script>
+import { mapState } from "pinia";
 import { RouterLink } from "vue-router";
-</script> -->
+import cartStore from "../../stores/cartStore";
+export default {
+  computed: {
+    ...mapState(cartStore, ["carts", "total"]),
+  },
+  components: {
+    RouterLink,
+  },
+  mounted() {
+    console.log(this.carts, this.total);
+  },
+};
+</script>

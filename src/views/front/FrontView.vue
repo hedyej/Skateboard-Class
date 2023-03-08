@@ -1,7 +1,9 @@
 <template>
-  <NavBar />
-  <RouterView />
-  <TheFooter></TheFooter>
+  <div class="min-vh-100 d-flex flex-column">
+    <NavBar />
+    <RouterView />
+    <TheFooter class="mt-auto"></TheFooter>
+  </div>
 </template>
 
 <script type="module">

@@ -3,7 +3,7 @@
     <template #header>確定刪除？</template>
     <template #body>您確定要刪除購物車課程嗎？</template>
   </DeleteModal>
-  <main class="bg-grey">
+  <main class="bg-grey flex-grow-1">
     <div class="container py-4">
       <h1>購物車</h1>
       <div class="text-end">

@@ -32,14 +32,14 @@
 
       <div class="row row-cols-3">
         <div class="col" v-for="product in products" :key="product.id">
-          <div class="card border-0">
+          <div class="card border-0 rounded">
             <img
               :src="product.imageUrl"
               class="card-img-top object-fit-cover"
               alt="..."
               style="height: 200px"
             />
-            <div class="card-body bg-white">
+            <div class="card-body bg-white rounded-bottom">
               <h5 class="card-title">{{ product.title }}</h5>
               <p class="card-text">
                 {{ product.content }}
@@ -61,7 +61,7 @@
               class="page-link"
               href="#"
               v-if="has_pre"
-              @click="getProduct(nowTab, --i)"
+              @click="getProduct(nowTab, --pagination.current_page)"
               >Previous</a
             >
           </li>
@@ -79,7 +79,7 @@
               class="page-link"
               href="#"
               v-if="has_next"
-              @click="getProduct(nowTab, ++i)"
+              @click="getProduct(nowTab, ++pagination.current_page)"
               >Next</a
             >
           </li>

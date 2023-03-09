@@ -5,3 +5,10 @@
 .nav-space {
   margin-top: 76px;
 }
+
+.ellipsis-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 0;
+}

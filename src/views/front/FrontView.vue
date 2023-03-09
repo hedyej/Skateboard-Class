@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script type="module">
+<script>
 import { RouterView } from "vue-router";
 import NavBar from "../../components/global/NavBar.vue";
 import TheFooter from "../../components/global/TheFooter.vue";

@@ -17,12 +17,12 @@
       </div>
 
       <table
-        class="table bg-white table-striped table-hover align-middle rounded"
+        class="table bg-white table-striped table-hover align-middle rounded cart-table"
       >
         <thead>
           <tr>
             <th scope="col" class="col-2"></th>
-            <th scope="col" class="col-2">名稱</th>
+            <th scope="col" class="col-2 text-truncate max-width-0">名稱</th>
             <th scope="col" class="col-2">價格</th>
             <th scope="col" class="col-3">報名人數</th>
             <th scope="col">合計</th>
@@ -39,7 +39,7 @@
                 class="object-fit-cover"
               />
             </th>
-            <td>{{ item.product.title }}</td>
+            <td class="ellipsis-text">{{ item.product.title }}</td>
             <td>
               <div class="d-flex flex-column">
                 <span

@@ -21,12 +21,12 @@
       >
         <thead>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">名稱</th>
-            <th scope="col">價格</th>
-            <th scope="col">報名人數</th>
+            <th scope="col" class="col-2"></th>
+            <th scope="col" class="col-2">名稱</th>
+            <th scope="col" class="col-2">價格</th>
+            <th scope="col" class="col-3">報名人數</th>
             <th scope="col">合計</th>
-            <th scope="col">操作</th>
+            <th scope="col" class="col-1">操作</th>
           </tr>
         </thead>
         <tbody>

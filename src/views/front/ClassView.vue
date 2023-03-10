@@ -32,7 +32,7 @@
 
       <div class="row row-cols-3">
         <div class="col" v-for="product in products" :key="product.id">
-          <div class="card border-0 rounded">
+          <div class="card border-0 rounded mb-4">
             <img
               :src="product.imageUrl"
               class="card-img-top object-fit-cover"
@@ -40,8 +40,8 @@
               style="height: 200px"
             />
             <div class="card-body bg-white rounded-bottom">
-              <h5 class="card-title">{{ product.title }}</h5>
-              <p class="card-text">
+              <h5 class="card-title text-truncate">{{ product.title }}</h5>
+              <p class="card-text text-line">
                 {{ product.content }}
               </p>
               <RouterLink
@@ -56,11 +56,10 @@
 
       <nav v-if="pagination.total_pages > 1" class="mt-5 text-center">
         <ul class="pagination justify-content-center">
-          <li class="page-item">
+          <li class="page-item" :disabled="!pagination.has_pre">
             <a
               class="page-link"
               href="#"
-              v-if="has_pre"
               @click="getProduct(nowTab, --pagination.current_page)"
               >Previous</a
             >
@@ -74,11 +73,10 @@
               >{{ i }}</a
             >
           </li>
-          <li class="page-item">
+          <li class="page-item" :disabled="!pagination.has_next">
             <a
               class="page-link"
               href="#"
-              v-if="has_next"
               @click="getProduct(nowTab, ++pagination.current_page)"
               >Next</a
             >
@@ -138,6 +136,7 @@ export default {
   },
   mounted() {
     this.getProduct(this.nowTab);
+    console.log(this.pagination);
   },
 };
 </script>

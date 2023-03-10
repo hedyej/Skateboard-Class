@@ -21,7 +21,7 @@
           ></font-awesome-icon>
           <span
             class="py-1 px-1 badge bg-danger rounded position-absolute top-0 start-100 translate-middle"
-            >10</span
+            >{{ carts.length }}</span
           >
         </div>
       </RouterLink>
@@ -67,18 +67,22 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapState, mapActions } from "pinia";
 import { RouterLink } from "vue-router";
 import cartStore from "../../stores/cartStore";
 export default {
   computed: {
-    ...mapState(cartStore, ["carts", "total"]),
+    ...mapState(cartStore, ["carts"]),
   },
   components: {
     RouterLink,
   },
+  methods: {
+    ...mapActions(cartStore, ["getCart"]),
+  },
   mounted() {
-    console.log(this.carts, this.total);
+    this.getCart();
+    console.log("內容", this.qty);
   },
 };
 </script>

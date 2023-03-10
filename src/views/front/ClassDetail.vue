@@ -11,32 +11,19 @@
       <div class="d-flex pt-4 pb-5">
         <div class="d-flex flex-column">
           <img
-            width="100px"
-            height="75px"
-            src="@/assets/img/Home02.png"
+            v-for="img in product.imagesUrl"
+            :key="img"
+            width="100"
+            height="75"
+            :src="img"
             class="object-fit-cover mb-3"
-            alt=""
-          />
-          <img
-            width="100px"
-            height="75px"
-            src="@/assets/img/Home02.png"
-            class="object-fit-cover mb-3"
-            alt=""
-          />
-          <img
-            width="100px"
-            height="75px"
-            src="@/assets/img/Home02.png"
-            class="object-fit-cover mb-3"
-            alt=""
           />
         </div>
 
         <img
-          width="600px"
-          height="400px"
-          src="@/assets/img/Home02.png"
+          width="600"
+          height="400"
+          :src="product.imageUrl"
           class="object-fit-cover ms-3"
         />
 
@@ -91,8 +78,10 @@
 
   <section class="bg-grey">
     <div class="container pb-3">
+      <h4 class="mb-3">課程簡介</h4>
+      <p class="mb-5">{{ product.content }}</p>
       <h4 class="mb-3">課程說明</h4>
-      <p>內容</p>
+      <p>{{ product.description }}</p>
     </div>
   </section>
 </template>
@@ -118,6 +107,7 @@ export default {
       this.$http(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/product/${this.id}`)
         .then((res) => {
           this.product = res.data.product;
+          console.log("商品資訊", this.product);
         })
         .catch((err) => console.log(err));
     },

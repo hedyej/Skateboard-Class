@@ -26,7 +26,7 @@
             <th scope="col" class="col-2">價格</th>
             <th scope="col" class="col-3">報名人數</th>
             <th scope="col">合計</th>
-            <th scope="col" class="col-1">操作</th>
+            <th scope="col" class="col-1 text-center">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -76,7 +76,7 @@
               </div>
             </td>
             <td>NT$ 1500</td>
-            <td>
+            <td class="text-center">
               <!-- <font-awesome-icon class="me-4" :icon="['fas', 'pen']" /> -->
 
               <font-awesome-icon

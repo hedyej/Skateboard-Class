@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import statusStore from "./statusStore";
 import axios from "axios";
+const status = statusStore();
 const { VITE_BASE_URL, VITE_API_PATH } = import.meta.env;
 
 export default defineStore("cartStore", {
@@ -9,8 +10,6 @@ export default defineStore("cartStore", {
       carts: {},
       final_total: "",
       total: "",
-      statusStore: statusStore(),
-      statusMsg: {},
     };
   },
   actions: {
@@ -22,9 +21,8 @@ export default defineStore("cartStore", {
       axios
         .post(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/cart`, { data })
         .then((res) => {
-          console.log(this.statusStore);
-          this.statusStore.isBounced = true;
-          this.statusStore.updateStatus(res.data.message, "新增成功");
+          status.isBounced = true;
+          status.pushMsg("success", res.data.message);
           this.getCart();
         })
         .catch((err) => console.log(err));

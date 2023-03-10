@@ -1,49 +1,31 @@
 <template>
-  <h1>{{ msgStatus }}</h1>
-  <div
-    class="toast align-items-center position-fixed end-0 m-4"
-    role="alert"
-    style="z-index: 3000"
-    aria-live="assertive"
-    aria-atomic="true"
-    ref="toast"
-  >
-    <div class="d-flex">
-      <div class="toast-body">{{ msgStatus.status }}</div>
-      <button
-        type="button"
-        class="btn-close me-2 m-auto"
-        data-bs-dismiss="toast"
-        aria-label="Close"
-      ></button>
+  <div class="toast-container">
+    <div
+      class="toast align-items-center"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="d-flex" v-for="(msg, i) in msgs" :key="i + msg">
+        <div class="toast-body">{{ msg.text }}</div>
+        <button
+          type="button"
+          class="btn-close me-2 m-auto"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Toast } from "bootstrap";
+import statusStore from "../../stores/statusStore";
 import { mapState } from "pinia";
-import statusStore from "../../stores/statusStore.js";
 export default {
-  data() {
-    return {
-      toast: {},
-    };
-  },
   computed: {
-    ...mapState(statusStore, ["msgStatus"]),
-  },
-  mounted() {
-    this.toast = new Toast(this.$refs.toast);
-    this.toast.show();
-  },
-  watch: {
-    msgStatus: {
-      handler() {
-        this.toast.show();
-      },
-      deep: true,
-    },
+    ...mapState(statusStore, ["msgs"]),
   },
 };
 </script>
+<!-- const msg = { status: status, text: text }; -->

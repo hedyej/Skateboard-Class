@@ -8,12 +8,17 @@ export default defineStore("statusStore", {
   },
   actions: {
     pushMsg(status, text) {
-      const msg = { status: status, text: text };
-      this.msgs.push(msg);
+      // const msg = { status, text };
+      this.msgs.push({ status, text });
+      // console.log("狀態", msg);
+      console.log("狀態s", this.msgs);
       this.AutoClearMsg();
     },
     AutoClearMsg() {
-      setTimeout(this.msgs.shift(), 2000);
+      setTimeout(() => {
+        console.log(this.msgs[0], "shift");
+        this.msgs.shift();
+      }, 4000);
     },
   },
 });

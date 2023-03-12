@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import statusStore from "./statusStore";
 import axios from "axios";
-const status = statusStore();
 const { VITE_BASE_URL, VITE_API_PATH } = import.meta.env;
 
 export default defineStore("cartStore", {
@@ -20,12 +19,17 @@ export default defineStore("cartStore", {
       };
       axios
         .post(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/cart`, { data })
-        .then((res) => {
+        .then(() => {
+          const status = statusStore();
           status.isBounced = true;
-          status.pushMsg("success", res.data.message);
+          status.pushMsg("success", "新增成功");
           this.getCart();
         })
-        .catch((err) => console.log(err));
+        .catch(() => {
+          const status = statusStore();
+          status.isBounced = true;
+          status.pushMsg("failed", "新增失敗");
+        });
     },
     getCart() {
       axios
@@ -34,9 +38,12 @@ export default defineStore("cartStore", {
           this.carts = res.data.data.carts;
           this.final_total = res.data.data.final_total;
           this.total = res.data.data.total;
-          console.log("購物車內容", this.carts);
         })
-        .catch((err) => console.log(err));
+        .catch(() => {
+          const status = statusStore();
+          status.isBounced = true;
+          status.pushMsg("failed", "請重新整理");
+        });
     },
     editCart(cartId, productId, qty) {
       const data = {
@@ -47,24 +54,41 @@ export default defineStore("cartStore", {
       };
       axios
         .put(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/cart/${cartId}`, data)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+        .catch(() => {
+          const status = statusStore();
+          status.isBounced = true;
+          status.pushMsg("failed", "更新失敗");
+        });
     },
     deleteCart(cartId) {
       axios
         .delete(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/cart/${cartId}`)
         .then(() => {
+          const status = statusStore();
+          status.isBounced = true;
+          status.pushMsg("success", "刪除成功");
           this.getCart();
         })
-        .catch((err) => console.log(err));
+        .catch(() => {
+          const status = statusStore();
+          status.isBounced = true;
+          status.pushMsg("failed", "刪除失敗");
+        });
     },
     deleteAllCarts() {
       axios
         .delete(`${VITE_BASE_URL}v2/api/${VITE_API_PATH}/carts`)
         .then(() => {
           this.getCart();
+          const status = statusStore();
+          status.isBounced = true;
+          status.pushMsg("success", "刪除成功");
         })
-        .catch((err) => console.log(err));
+        .catch(() => {
+          const status = statusStore();
+          status.isBounced = true;
+          status.pushMsg("failed", "刪除失敗");
+        });
     },
   },
   getters: {},

@@ -4,6 +4,8 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -42,4 +44,5 @@ app.use(createPinia());
 app.use(router);
 app.use(VueAxios, axios);
 app.component("font-awesome-icon", FontAwesomeIcon);
+app.component("Loading", Loading);
 app.mount("#app");

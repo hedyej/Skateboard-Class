@@ -42,6 +42,8 @@
             <td class="ellipsis-text">{{ item.product.title }}</td>
             <td>
               <div class="d-flex flex-column">
+                <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+                <i class="fa-solid fa-spinner fa-spin-pulse"></i>
                 <span
                   >NT$ {{ item.product.price }} / {{ item.product.unit }}</span
                 >
@@ -93,12 +95,20 @@
         <button type="button" class="btn btn-accent border border-dark">
           立即結帳
         </button>
+        <RouterLink
+          :to="{ name: 'order' }"
+          type="button"
+          class="btn btn-accent border border-dark"
+        >
+          立即結帳
+        </RouterLink>
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
 import { mapState, mapActions } from "pinia";
 import cartStore from "../../stores/cartStore.js";
 import DeleteModal from "../../components/global/DeleteModal.vue";
@@ -114,6 +124,7 @@ export default {
   },
   components: {
     DeleteModal,
+    RouterLink,
   },
   computed: {
     ...mapState(cartStore, ["carts"]),

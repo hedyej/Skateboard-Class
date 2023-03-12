@@ -15,7 +15,7 @@
     </div>
   </header>
 
-  <main class="bg-grey py-5">
+  <main class="bg-grey py-5 flex-grow-1">
     <div class="container">
       <nav class="nav nav-pills d-flex justify-content-center mb-5">
         <a
@@ -29,26 +29,36 @@
           >{{ tab }}</a
         >
       </nav>
+      <div class="position-relative">
+        <Loading
+          v-model:active="isLoading"
+          :is-full-page="isFullPage"
+          :can-cancel="false"
+          :on-cancel="false"
+          style="height: 160px"
+        ></Loading>
 
-      <div class="row row-cols-3">
-        <div class="col" v-for="product in products" :key="product.id">
-          <div class="card border-0 rounded mb-4">
-            <img
-              :src="product.imageUrl"
-              class="card-img-top object-fit-cover"
-              alt="..."
-              style="height: 200px"
-            />
-            <div class="card-body bg-white rounded-bottom">
-              <h5 class="card-title text-truncate">{{ product.title }}</h5>
-              <p class="card-text text-line">
-                {{ product.content }}
-              </p>
-              <RouterLink
-                :to="`/class/${product.id}`"
-                class="btn btn-outline-dark w-100 text-center"
-                >查看更多</RouterLink
-              >
+        <div class="row row-cols-3">
+          <div class="col" v-for="product in products" :key="product.id">
+            <div class="card border-0 rounded mb-4">
+              <img
+                :src="product.imageUrl"
+                class="card-img-top object-fit-cover"
+                alt="..."
+                style="height: 200px"
+              />
+              <div class="card-body bg-white rounded-bottom">
+                <h5 class="card-title text-truncate">{{ product.title }}</h5>
+                <p class="card-text text-line">
+                  {{ product.content }}
+                </p>
+                <RouterLink
+                  :to="`/class/${product.id}`"
+                  class="btn btn-outline-dark w-100 text-center"
+                  href="#"
+                  >查看更多</RouterLink
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -100,6 +110,8 @@ export default {
       tabs: ["所有課程", "大橘", "虎斑"],
       nowTab: "所有課程",
       pagination: {},
+      isLoading: true,
+      isFullPage: false,
     };
   },
   methods: {
@@ -110,6 +122,7 @@ export default {
           .then((res) => {
             this.products = res.data.products;
             this.pagination = res.data.pagination;
+            this.isLoading = false;
             console.log(res);
           })
           .catch((err) => console.log(err));

@@ -7,7 +7,7 @@
         width: 100%;
         background-size: cover;
       "
-      class="d-flex align-items-center justify-content-center"
+      class="d-flex align-items-center justify-content-center nav-space"
     >
       <h1 class="display-4 text-white" style="text-shadow: 2px 3px 5px #4d4d4d">
         所有課程

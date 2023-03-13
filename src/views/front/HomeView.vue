@@ -2,7 +2,7 @@
   <img
     src="@/assets/img/home/hero.png"
     alt=""
-    class="vh-100 w-100 object-fit-cover"
+    class="vh-100 w-100 object-fit-cover nav-space"
     style="filter: drop-shadow(0 0 #fffff)"
   />
   <section class="bg-accent">

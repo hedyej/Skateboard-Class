@@ -1,6 +1,5 @@
 <template>
-  {{ test }} 什麼？
-  <div class="bg-grey py-4">
+  <div class="bg-grey py-4 nav-space">
     <div class="container">
       <button type="button" class="btn btn-outline-dark border-0 mb-3">
         <font-awesome-icon class="me-2" :icon="['fas', 'arrow-left']" />

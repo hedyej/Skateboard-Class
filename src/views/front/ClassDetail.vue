@@ -1,6 +1,6 @@
 <template>
-  <main class="bg-grey">
-    <div class="container pt-4 pb-6 bg-grey">
+  <main class="bg-grey nav-space">
+    <div class="container pt-4 pb-6">
       <RouterLink :to="{ name: 'class' }" class="btn btn-outline-dark border-0">
         <font-awesome-icon
           class="me-2"

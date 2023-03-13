@@ -3,6 +3,7 @@
     <NavBar />
     <ToastNotification />
     <RouterView />
+
     <TheFooter class="mt-auto" />
   </div>
 </template>

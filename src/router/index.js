@@ -78,6 +78,10 @@ const router = createRouter({
       ],
     },
   ],
+  scrollBehavior() {
+    // always scroll to top
+    return { top: 0 };
+  },
 });
 
 // {

@@ -29,7 +29,7 @@
           >{{ tab }}</a
         >
       </nav>
-      <div class="position-relative">
+      <div>
         <Loading
           v-model:active="isLoading"
           :is-full-page="isFullPage"

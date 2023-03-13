@@ -5,7 +5,8 @@
         <font-awesome-icon
           class="me-2"
           :icon="['fas', 'arrow-left']"
-        />上一頁</RouterLink
+          :to="{ name: 'class' }"
+        />上到課程列表</RouterLink
       >
 
       <div class="d-flex pt-4 pb-5">

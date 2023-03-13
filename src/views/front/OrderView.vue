@@ -1,10 +1,14 @@
 <template>
-  <div class="bg-grey py-4 nav-space">
+  <div class="bg-grey pb-4 nav-space">
     <div class="container">
-      <button type="button" class="btn btn-outline-dark border-0 mb-3">
+      <RouterLink
+        type="button"
+        class="btn btn-outline-dark border-0 my-3"
+        :to="{ name: 'cart' }"
+      >
         <font-awesome-icon class="me-2" :icon="['fas', 'arrow-left']" />
-        上一頁
-      </button>
+        回到購物車
+      </RouterLink>
 
       <div class="bg-white p-4 rounded">
         <div class="bg-white rounded">
@@ -176,15 +180,14 @@
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
 import { mapState } from "pinia";
 import cartStore from "../../stores/cartStore";
 
 export default {
-  // data() {
-  //   return {
-  //     ...mapState(cartStore, ["test"]),
-  //   };
-  // },
+  components: {
+    RouterLink,
+  },
   computed: {
     ...mapState(cartStore, ["test"]),
   },

@@ -2,7 +2,7 @@
   <header>
     <div
       style="
-        background-image: url(@/assets/img/class/classBg.png);
+        background-image: url(~@/assets/img/class/classBg.png);
         height: 240px;
         width: 100%;
         background-size: cover;

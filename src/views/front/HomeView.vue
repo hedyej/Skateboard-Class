@@ -153,7 +153,7 @@
 
   <section
     style="
-      background-image: url(../../src/assets/img/home/homeBg.png);
+      background-image: url('../src/assets/img/home/homeBg.png');
       height: 300px;
       width: 100%;
       background-position: center 60%;

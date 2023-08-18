@@ -2,7 +2,7 @@
   <header>
     <div
       style="
-        background-image: url('~img/class/classBg.png');
+        background-image: url(../../src/assets/img/class/classBg.png);
         height: 240px;
         width: 100%;
         background-size: cover;
@@ -80,7 +80,6 @@
                 <RouterLink
                   :to="`/class/${product.id}`"
                   class="btn btn-outline-dark w-100 text-center"
-                  href="#"
                   >查看更多</RouterLink
                 >
               </div>
@@ -107,25 +106,22 @@
           <ul class="pagination justify-content-center">
             <li class="page-item" :class="{ disabled: !pagination.has_pre }">
               <a
-                class="page-link"
-                href="#"
+                class="page-link cursor-pointer"
                 @click="getProduct(nowTab, pagination.current_page - 1)"
                 >上一頁</a
               >
             </li>
             <li v-for="i in pagination.total_pages" :key="i" class="page-item">
               <a
-                class="page-link"
+                class="page-link cursor-pointer"
                 :class="{ active: i === pagination.current_page }"
-                href="#"
                 @click="getProduct(nowTab, i)"
                 >{{ i }}</a
               >
             </li>
             <li class="page-item" :class="{ disabled: !pagination.has_next }">
               <a
-                class="page-link"
-                href="#"
+                class="page-link cursor-pointer"
                 @click="getProduct(nowTab, pagination.current_page + 1)"
                 >下一頁</a
               >
@@ -143,7 +139,9 @@
               class="page-item"
               :class="{ disabled: searchPagination.nowPage === 0 }"
             >
-              <a class="page-link" href="#" @click="changeSearchPage">上一頁</a>
+              <a class="page-link cursor-pointer" @click="changeSearchPage"
+                >上一頁</a
+              >
             </li>
             <li
               v-for="i in searchPagination.total_pages"
@@ -151,9 +149,8 @@
               class="page-item"
             >
               <a
-                class="page-link"
+                class="page-link cursor-pointer"
                 :class="{ active: i === searchPagination.nowPage + 1 }"
-                href="#"
                 @click="changeSearchPage"
                 >{{ i }}
               </a>
@@ -166,7 +163,9 @@
               }"
               @click="changeSearchPage"
             >
-              <a class="page-link" href="#">下一頁</a>
+              <a class="page-link cursor-pointer" @click="changeSearchPage"
+                >下一頁</a
+              >
             </li>
           </ul>
         </nav>
@@ -264,10 +263,10 @@ export default {
     changeSearchPage(e) {
       let page = e.target.textContent;
 
-      if (page === "Previous") {
+      if (page === "上一頁") {
         const prePage = this.searchPagination.nowPage - 1;
         this.products = this.resultPage[prePage];
-      } else if (page === "Next") {
+      } else if (page === "下一頁") {
         const nextPage = this.searchPagination.nowPage + 1;
         this.products = this.resultPage[nextPage];
       } else {

@@ -176,6 +176,8 @@
 
 <script>
 const { VITE_BASE_URL, VITE_API_PATH } = import.meta.env;
+import classBg from "@/assets/img/class/classBg.png";
+
 export default {
   data() {
     return {
@@ -194,6 +196,7 @@ export default {
         total_pages: 0,
         nowPage: 0,
       },
+      classBg,
     };
   },
   methods: {
@@ -289,8 +292,4 @@ export default {
     this.getProduct(this.nowTab);
   },
 };
-</script>
-
-<script setup>
-import classBg from "@/assets/img/class/classBg.png";
 </script>

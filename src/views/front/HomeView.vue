@@ -152,12 +152,12 @@
   </section>
 
   <section
-    style="
-      background-image: url(@/assets/img/home/homeBg.png);
+    :style="`
+      background-image: url(${homeBg});
       height: 300px;
       width: 100%;
       background-position: center 60%;
-    "
+    `"
   ></section>
 
   <section class="bg-grey text-dark">
@@ -178,3 +178,7 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import homeBg from "@/assets/img/home/homeBg.png";
+</script>

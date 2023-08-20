@@ -1,13 +1,13 @@
 <template>
   <header>
     <div
-      style="
-        background-image: url(@/assets/img/class/classBg.png);
-        height: 240px;
-        width: 100%;
-        background-size: cover;
-        background-position: center 60%;
-      "
+      :style="`
+      background-image: url(${classBg});
+      height: 240px;
+      width: 100%;
+      background-size: cover;
+      background-position: center 60%;
+    `"
       class="d-flex align-items-center justify-content-center"
     >
       <h1 class="display-4 text-white" style="text-shadow: 2px 3px 5px #4d4d4d">
@@ -289,4 +289,8 @@ export default {
     this.getProduct(this.nowTab);
   },
 };
+</script>
+
+<script setup>
+import classBg from "@/assets/img/class/classBg.png";
 </script>
